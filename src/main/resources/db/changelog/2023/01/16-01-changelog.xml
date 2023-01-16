@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.18.xsd">
+
+    <changeSet id="1" author="fabio">
+        <createTable tableName="reservation">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="dataInizio" type="Date"/>
+            <column name="dataFine" type="Date"/>
+            <column name="numeroStanza" type="integer"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="fabio" context="prod">
+        <sql>
+            INSERT into reservation (dataInizio, dataFine, numeroStanza)
+            values ('2023-01-16', '2023-01-17', 106);
+        </sql>
+        <sql>
+            INSERT into reservation (dataInizio, dataFine, numeroStanza)
+            values ('2023-01-01', '2023-01-20', 210);
+        </sql>
+        <sql>
+            INSERT into reservation (dataInizio, dataFine, numeroStanza)
+            values ('2023-01-21', '2023-01-25', 314);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
